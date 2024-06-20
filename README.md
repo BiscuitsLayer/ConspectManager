@@ -10,9 +10,8 @@ Collect notes from all the lectures (by paths provided), add markdown files and 
 
 ![alt text](docs/general.png)
 
-3. Go to `Actions` -> `New` and browse to the `main.py` file of current project
+3. Go to `Actions` -> `New` and browse to the `basic.py` file of current project
 
 ![alt text](docs/actions.png)
 
 4. Go to `Triggers` -> `New` and set up the time you want your notes to be checked and uploaded
- 
