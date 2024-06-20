@@ -1,4 +1,5 @@
 *.log
 *.json
 
-cache/
+cache
+__pycache__
