@@ -1,0 +1,13 @@
+{   
+    "repo": "REPO_URL",
+    "branches": [
+        {
+            "name": "FIRST_BRANCH_NAME",
+            "path": "FIRST_BRANCH_PATH"
+        },
+        {
+            "name": "SECOND_BRANCH_NAME",
+            "path": "SECOND_BRANCH_PATH"
+        }
+    ]
+}
