@@ -1,4 +1,5 @@
 import json
+import os
 import shutil
 import time
 import git
@@ -82,6 +83,15 @@ if __name__ == "__main__":
         if not repo.remotes:
             origin = repo.create_remote('origin', my_repo_url)
             logging.info(f"Remote origin added with url {my_repo_url}")
+
+        # Add github actions file
+        if not os.path.exists(os.path.join(branch["path"], '.github', 'workflows')):
+            os.mkdir(os.path.join(branch["path"], '.github'))
+            os.mkdir(os.path.join(branch["path"], '.github', 'workflows'))
+            shutil.copy(
+                src=os.path.join(os.getcwd(), 'templates', 'github-actions-demo.yml'), 
+                dst=os.path.join(branch["path"], '.github', 'workflows', 'github-actions-demo.yml')
+        )
 
         # Push default update
         attempts_count = 0
