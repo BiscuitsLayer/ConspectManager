@@ -45,7 +45,7 @@ def make_prettier(path: str):
 
     # Handle note files
     for lecture_file in lecture_files:
-        with fileinput.input(os.path.join(path, lecture_file), inplace=True) as file:
+        with fileinput.input(os.path.join(path, lecture_file), inplace=True, encoding="utf8") as file:
             for line in file:
                 # Remove newline symbol (because there will be newline anyway when print is used)
                 line = line.split('\n')[0]
@@ -59,10 +59,12 @@ def make_prettier(path: str):
                     if 'images' not in os.path.split(old_image_path):
                         # If image file name was changed (because of index) and it is saved in mapping, replace it
                         # Otherwise, just leave the previous image file name
+                        #
+                        # '/'.join instead of os.path.join, because for markdown we must always have '/' separator
                         if old_image_path in image_names_mapping:
-                            new_image_path = os.path.join('images', image_names_mapping[old_image_path])
+                            new_image_path = '/'.join(['images', image_names_mapping[old_image_path]])
                         else:
-                            new_image_path = os.path.join('images', old_image_path)
+                            new_image_path = '/'.join(['images', old_image_path])
 
                     # Change line in file
                     print(line.replace(old_image_path, new_image_path))
