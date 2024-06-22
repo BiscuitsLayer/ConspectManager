@@ -1,5 +1,6 @@
 {   
     "repo": "REPO_URL",
+    "token": "PERSONAL_ACCESS_TOKEN",
     "branches": [
         {
             "name": "FIRST_BRANCH_NAME",
