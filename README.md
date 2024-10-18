@@ -42,10 +42,16 @@ For each branch in `Branches` provide a name of a subject and an **absolute** pa
 git clone https://github.com/BiscuitsLayer/ConspectManager.git
 ```
 
-2. Go to the project root and install requirements
+2. Go to the project root, setup virtual env and install requirements
 
 ```bash
 cd ./ConspectManager
+
+# Create and activate venv
+python -m venv env
+. ./env/Scripts/activate
+
+# Install requirements
 pip install -r requirements.txt
 ```
 
@@ -72,11 +78,11 @@ DATE TIME; COURSE_NAME; INFO; PRETTIER: push done
 
 ![alt text](docs/general.png)
 
-3. Go to `Actions` -> `New` and choose Python interpreter as a program/script and `basic.py` file of current project as an argument
+3. Go to `Actions` -> `New` and choose Python interpreter in virtual env as a program/script and `basic.py` file of current project as an argument
 
-    On my PC Python interpreter path is 
+    On my PC Python interpreter in virtual env path is 
 
-    `C:\Users\Vinog\AppData\Local\Programs\Python\Python311\python.exe`
+    `C:\Users\Vinog\Downloads\ConspectManager\env\Scripts\python.exe`
 
     And `basic.py` file path is
 
