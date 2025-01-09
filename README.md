@@ -1,6 +1,6 @@
 # ConspectManager
 
-Manager for markdown notes written in `Visual Studio Code`
+Manager for markdown notes written in `Obsidian` and `Visual Studio Code`!
 
 ## Description
 
@@ -8,11 +8,11 @@ Collect notes from all the lectures (by paths provided), add files and images an
 
 ## How to write lecture notes
 
-Use `Visual Studio Code` and Markdown to write notes from online lectures effectively
+Use `Obsidian` or `Visual Studio Code` and Markdown to write notes from online lectures effectively
 
 1. Markdown allows you to add `LaTeX` formulas directly to the text (it is easier than any other `LaTeX` tools)
 
-2. `Visual Studio Code` allows you to save images (screenshots) fast just by pressing `Ctrl+V` to place an image in the note (image file will be saved in the same folder)
+2. `Obsidian` and `Visual Studio Code` allow you to save images (screenshots) fast just by pressing `Ctrl+V` to place an image in the note (image file will be saved in the same folder)
 
 This tool is used to upload new notes and manage image files
 

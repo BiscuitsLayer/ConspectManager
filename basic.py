@@ -4,6 +4,7 @@ import shutil
 import time
 import git
 import logging
+import traceback
 
 from prettier import make_prettier
 
@@ -63,11 +64,17 @@ if __name__ == "__main__":
 
     # Initialize loggers
     logging.basicConfig(handlers=(file_log, console_out), level=logging.INFO)
+    formatter = logging.Formatter(f"%(asctime)s; NEW_LAUNCH; %(levelname)s; %(message)s", "%Y-%m-%d %H:%M:%S")
+    file_log.setFormatter(formatter)
+    console_out.setFormatter(formatter)
+
+    # Log empty message to denote session start
+    logging.info("")
 
     # Parse configs
     with open(os.path.join(dirname, CONFIG_FILENAME), "r", encoding="utf8") as f:
         config = json.load(f)
-        logging.info(f"{config = }")
+        # logging.info(f"{config = }")
 
     my_repo_token = config["token"]
     my_repo_url_parts = config["repo"].split('/')
@@ -87,7 +94,6 @@ if __name__ == "__main__":
         if repo.remotes:
             repo.delete_remote('origin')
             logging.info("Remote origin deleted")
-
 
         if not repo.remotes:
             origin = repo.create_remote('origin', my_repo_url_with_token)
@@ -109,6 +115,10 @@ if __name__ == "__main__":
 
         # Push prettier update
         attempts_count = 0
-        make_prettier(branch["path"])
+        try:
+            make_prettier(branch["path"])
+        except Exception as e:
+            logging.error(f"PRETTIER stage failed: {traceback.format_exc()}")
+
         while not commit_and_push(repo, branch, commit_prefix="PRETTIER") and attempts_count < MAX_ATTEMPTS_COUNT:
             attempts_count += 1
